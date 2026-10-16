@@ -78,17 +78,4 @@ AegisFlow runs on a four-stage lifecycle to ensure code changes match structural
 
 ---
 
-## Presenting AegisFlow to an Interviewer
 
-### 1. The Core Problem (Context Amnesia & Key Leaks)
-AI coding tools operate in isolated chat sessions, meaning they have no long-term memory of previous decisions. A common, high-risk result of this is **security credential leakage**. Agents or developers working in a hurry often hardcode JWT secrets or API keys into config files, exposing keys to repository histories and cloud exploits.
-
-### 2. The AegisFlow Solution
-Instead of searching flat text files, AegisFlow constructs a directed graph of relationships:
-`[Security Policy: Zero Secrets] ───(linked constraint)───> [File: settings.py]`
-
-When a commit contains code changes, AegisFlow parses the Git diff, queries the graph, evaluates the logic, and blocks the commit if a hardcoded secret is detected.
-
-### 3. Key Pitch Highlights
-* **High Real-World Impact:** Resolves the massive cloud vulnerability risk of committed credentials.
-* **Lightweight Graphing:** Lowers query overhead by using metadata relationships instead of vector database scans on full codebases.
